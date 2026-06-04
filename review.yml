@@ -1,0 +1,45 @@
+---
+name: École Normale Supérieure de Paris
+description: École Normale Supérieure de Paris public developer/API footprint review for APIs.json cataloging.
+url: https://raw.githubusercontent.com/api-evangelist/ens-paris/refs/heads/main/review.yml
+created: '2026-06-03'
+modified: '2026-06-03'
+reviews:
+  - date: '2026-06-03'
+    rating: 2
+    summary: >-
+      ENS Paris (rue d'Ulm, Université PSL) publishes no first-party developer
+      portal or documented institutional API; its official site lists academic
+      and digital resources but nothing developer-facing. Confirmed live,
+      relevant programmatic access is all third-party national infrastructure:
+      the HAL national open archive OAI-PMH endpoint and HAL REST/Search API
+      (which carry HAL-ENS deposits), and the MESR higher-education open-data
+      Explore API (which lists ENS as an establishment). No GitHub org exists at
+      github.com/ens-paris (404). No endpoints were fabricated; each URL below
+      was probed live. LinkedIn school page included by standard slug
+      (could not be fetched directly; LinkedIn returns HTTP 999 to crawlers).
+    endpoints:
+      - url: https://www.ens.psl.eu/en
+        status: 200
+        note: Official ENS website; no developer/API references found.
+      - url: https://api.archives-ouvertes.fr/oai/hal/?verb=Identify
+        status: 200
+        note: National HAL OAI-PMH server; HAL-ENS harvestable by collection set.
+      - url: https://api.hal.science/docs/
+        status: 200
+        note: HAL REST/Search API documentation; covers HAL-ENS records.
+      - url: https://data.enseignementsup-recherche.gouv.fr/api/explore/v2.1/console
+        status: 200
+        note: MESR Opendatasoft Explore API console; ENS appears as establishment.
+      - url: https://bib.ens.psl.eu/
+        status: 200
+        note: ENS library network site; no public API documented.
+      - url: https://halley.ens.fr/
+        status: 0
+        note: Legacy library catalogue host did not resolve at review time.
+      - url: https://github.com/ens-paris
+        status: 404
+        note: No official ENS Paris GitHub organization exists at this handle.
+      - url: https://www.linkedin.com/school/ecole-normale-superieure/
+        status: 999
+        note: LinkedIn school page; HTTP 999 returned to automated fetch.

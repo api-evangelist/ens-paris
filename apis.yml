@@ -1,0 +1,89 @@
+---
+aid: ens-paris
+name: École Normale Supérieure de Paris
+description: >-
+  École Normale Supérieure de Paris (ENS, rue d'Ulm) is a leading French grande
+  école and constituent member of Université PSL (Paris Sciences & Lettres),
+  ranked #86 in the QS World University Rankings 2025. ENS operates 15
+  departments, 35 research laboratories and a network of libraries. ENS does not
+  publish a first-party developer portal or documented institutional API; its
+  programmatic surface is reached indirectly via national French research and
+  higher-education open infrastructure. Researcher output is deposited in the
+  HAL-ENS open archive, which is harvestable through the national HAL OAI-PMH
+  endpoint and the HAL REST/Search API, and ENS establishment data is exposed
+  through the Ministry of Higher Education (MESR) open-data platform's
+  Opendatasoft Explore API.
+type: Index
+position: Consumer
+access: 3rd-Party
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/ens-paris/refs/heads/main/apis.yml
+tags:
+  - Education
+  - Higher Education
+  - University
+  - Research
+  - Open Data
+  - Open Access
+  - France
+created: '2026-06-03'
+modified: '2026-06-03'
+specificationVersion: '0.19'
+apis:
+  - aid: ens-paris:hal-oai-pmh
+    name: HAL-ENS Open Archive (OAI-PMH)
+    description: >-
+      HAL-ENS is the open archive hosting the scientific production of ENS Paris
+      researchers, teacher-researchers and doctoral students. It is part of the
+      national HAL platform and is harvestable via the OAI-PMH protocol; ENS
+      content can be retrieved by collection sets. No registration is required to
+      use the HAL OAI server.
+    humanURL: https://api.archives-ouvertes.fr/docs/oai
+    baseURL: https://api.archives-ouvertes.fr/oai/hal/
+    tags: [ Open Access, Research, Institutional Repository, OAI-PMH, Metadata ]
+    properties:
+      - type: Documentation
+        url: https://api.archives-ouvertes.fr/docs/oai
+  - aid: ens-paris:hal-api
+    name: HAL Search / REST API
+    description: >-
+      The national HAL open-archive REST and Search API provides programmatic
+      query access to publication metadata, including records deposited in the
+      HAL-ENS portal. Results can be filtered by collection, document type and
+      discipline.
+    humanURL: https://api.hal.science/docs/
+    baseURL: https://api.archives-ouvertes.fr/search/
+    tags: [ Open Access, Research, Search, Publications, Metadata ]
+    properties:
+      - type: Documentation
+        url: https://api.hal.science/docs/
+  - aid: ens-paris:mesr-opendata
+    name: MESR Higher Education Open Data (Explore API)
+    description: >-
+      The French Ministry of Higher Education, Research and Innovation (MESR)
+      open-data platform exposes establishment, enrolment and research datasets
+      via an Opendatasoft Explore API. ENS Paris appears as an establishment in
+      these national datasets; this is a third-party platform, not operated by
+      ENS itself.
+    humanURL: https://data.enseignementsup-recherche.gouv.fr/api/explore/v2.1/console
+    baseURL: https://data.enseignementsup-recherche.gouv.fr/api/explore/v2.1/
+    tags: [ Open Data, Higher Education, Statistics, Government, France ]
+    properties:
+      - type: Documentation
+        url: https://data.enseignementsup-recherche.gouv.fr/api/explore/v2.1/console
+common:
+  - type: Website
+    url: https://www.ens.psl.eu/en
+  - type: LinkedIn
+    url: https://www.linkedin.com/school/ecole-normale-superieure/
+  - type: Plans
+    url: plans/ens-paris-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/ens-paris-rate-limits.yml
+  - type: FinOps
+    url: finops/ens-paris-finops.yml
+  - type: Review
+    url: review.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
