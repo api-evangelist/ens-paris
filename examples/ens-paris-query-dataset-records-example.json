@@ -1,0 +1,35 @@
+{
+  "operation": "GET /catalog/datasets/{dataset_id}/records",
+  "description": "Query records from a MESR open-data dataset. This example queries the national 'principaux etablissements d'enseignement superieur' dataset for an Ecole Normale Superieure establishment record, the dataset in which ENS Paris appears as an establishment.",
+  "request": {
+    "method": "GET",
+    "url": "https://data.enseignementsup-recherche.gouv.fr/api/explore/v2.1/catalog/datasets/fr-esr-principaux-etablissements-enseignement-superieur/records",
+    "query": {
+      "where": "search(uo_lib,\"Normale Superieure\")",
+      "select": "uo_lib,nom_court,sigle,secteur_d_etablissement,localisation,url,uai,identifiant_ror,element_ror,coordonnees",
+      "limit": 2
+    }
+  },
+  "response": {
+    "total_count": 1,
+    "results": [
+      {
+        "uo_lib": "École normale supérieure de Lyon",
+        "nom_court": "ENS de Lyon",
+        "sigle": "ENS Lyon",
+        "secteur_d_etablissement": "public",
+        "localisation": "Auvergne-Rhône-Alpes>Lyon>Rhône>Lyon>Lyon 7e",
+        "url": "https://www.ens-lyon.fr/",
+        "uai": "0694123G",
+        "identifiant_ror": [
+          "04zmssz18"
+        ],
+        "element_ror": "https://ror.org/04zmssz18",
+        "coordonnees": {
+          "lon": 4.83376,
+          "lat": 45.7337
+        }
+      }
+    ]
+  }
+}

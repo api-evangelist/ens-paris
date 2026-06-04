@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ens-paris/main/json-schema/ens-paris-dataset-schema.json",
+  "title": "MESR Explore API Dataset",
+  "description": "A dataset object as returned by GET /catalog/datasets and GET /catalog/datasets/{dataset_id} of the MESR Opendatasoft Explore API v2.1. Derived faithfully from the published OpenAPI 3.0.3 'dataset' schema.",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "dataset_id": {
+      "type": "string",
+      "description": "Human-readable dataset identifier (slug)."
+    },
+    "dataset_uid": {
+      "type": "string",
+      "readOnly": true,
+      "description": "Internal unique dataset identifier."
+    },
+    "has_records": {
+      "type": "boolean"
+    },
+    "data_visible": {
+      "type": "boolean"
+    },
+    "features": {
+      "type": "array",
+      "description": "Available features for the dataset and the fields they apply to.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "metas": {
+      "type": "object",
+      "description": "Dataset metadata, grouped by template (e.g. 'default')."
+    },
+    "fields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "annotations": {
+            "type": "object"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "attachments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "mimetype": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "_links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string",
+            "format": "uri"
+          },
+          "rel": {
+            "type": "string",
+            "enum": [
+              "self",
+              "first",
+              "last",
+              "next",
+              "dataset",
+              "catalog"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

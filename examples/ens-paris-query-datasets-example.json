@@ -1,0 +1,36 @@
+{
+  "operation": "GET /catalog/datasets",
+  "description": "List/search datasets available in the MESR Explore API catalog. Used to discover the higher-education datasets in which ENS Paris establishment data is exposed.",
+  "request": {
+    "method": "GET",
+    "url": "https://data.enseignementsup-recherche.gouv.fr/api/explore/v2.1/catalog/datasets",
+    "query": {
+      "where": "search(\"enseignement superieur\")",
+      "limit": 1
+    }
+  },
+  "response": {
+    "total_count": 205,
+    "results": [
+      {
+        "dataset_id": "fr-esr-cico-organismes-publics-agrees-ci-collaboration-de-recherche",
+        "dataset_uid": "da_example",
+        "has_records": true,
+        "data_visible": true,
+        "features": [
+          "analyze",
+          "calendar",
+          "geo",
+          "timeserie",
+          "aggregate"
+        ],
+        "metas": {
+          "default": {
+            "title": "Organismes publics agréés au crédit d'impôt collaboration de recherche",
+            "publisher": "Ministère de l'Enseignement supérieur et de la Recherche"
+          }
+        }
+      }
+    ]
+  }
+}

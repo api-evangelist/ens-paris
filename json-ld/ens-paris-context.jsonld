@@ -1,0 +1,56 @@
+{
+  "@context": {
+    "schema": "https://schema.org/",
+    "ens": "https://www.ens.psl.eu/ns#",
+    "@vocab": "https://www.ens.psl.eu/ns#",
+    "name": "schema:name",
+    "url": "schema:url",
+    "description": "schema:description",
+    "CollegeOrUniversity": "schema:CollegeOrUniversity",
+    "Dataset": "schema:Dataset",
+    "identifier": "schema:identifier",
+    "ror": {
+      "@id": "schema:identifier",
+      "@type": "@id"
+    },
+    "uai": "ens:uai",
+    "dataset_id": {
+      "@id": "schema:identifier"
+    },
+    "dataset_uid": "ens:datasetUid",
+    "total_count": "ens:totalCount",
+    "results": "ens:results",
+    "record": "ens:record",
+    "features": "ens:features",
+    "metas": "ens:metas",
+    "uo_lib": "schema:name",
+    "nom_court": "schema:alternateName",
+    "sigle": "schema:alternateName",
+    "localisation": "schema:address",
+    "coordonnees": "schema:geo",
+    "secteur_d_etablissement": "ens:sector",
+    "publisher": "schema:publisher"
+  },
+  "@type": "CollegeOrUniversity",
+  "name": "École Normale Supérieure de Paris",
+  "url": "https://www.ens.psl.eu/en",
+  "description": "Leading French grande école and constituent member of Université PSL. Programmatic data is reached via the HAL open archive (OAI-PMH and Search/REST APIs) and the MESR Opendatasoft Explore API.",
+  "ror": "https://ror.org/05a0dhs15",
+  "ens:apiCatalog": [
+    {
+      "@type": "Dataset",
+      "name": "HAL-ENS Open Archive (OAI-PMH)",
+      "url": "https://api.archives-ouvertes.fr/oai/hal/"
+    },
+    {
+      "@type": "Dataset",
+      "name": "HAL Search / REST API",
+      "url": "https://api.archives-ouvertes.fr/search/"
+    },
+    {
+      "@type": "Dataset",
+      "name": "MESR Higher Education Open Data (Explore API)",
+      "url": "https://data.enseignementsup-recherche.gouv.fr/api/explore/v2.1/"
+    }
+  ]
+}

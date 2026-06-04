@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ens-paris/main/json-structure/ens-paris-dataset-structure.json",
+  "name": "MESRDataset",
+  "description": "JSON Structure for a dataset object of the MESR Explore API v2.1 catalog, describing the higher-education datasets that expose ENS Paris establishment data.",
+  "type": "object",
+  "properties": {
+    "dataset_id": {
+      "type": "string",
+      "description": "Human-readable dataset identifier (slug)."
+    },
+    "dataset_uid": {
+      "type": "string",
+      "description": "Internal unique dataset identifier."
+    },
+    "has_records": { "type": "boolean" },
+    "data_visible": { "type": "boolean" },
+    "features": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "metas": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "fields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "name": "Field",
+        "properties": {
+          "name": { "type": "string" },
+          "label": { "type": "string" },
+          "type": { "type": "string" },
+          "description": { "type": "string" }
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}

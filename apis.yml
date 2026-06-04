@@ -71,6 +71,22 @@ apis:
     properties:
       - type: Documentation
         url: https://data.enseignementsup-recherche.gouv.fr/api/explore/v2.1/console
+      - type: OpenAPI
+        url: openapi/ens-paris-mesr-opendata.yaml
+      - type: JSONSchema
+        url: json-schema/ens-paris-records-schema.json
+      - type: JSONSchema
+        url: json-schema/ens-paris-dataset-schema.json
+      - type: x-json-structure
+        url: json-structure/ens-paris-records-structure.json
+      - type: x-json-structure
+        url: json-structure/ens-paris-dataset-structure.json
+      - type: x-example
+        url: examples/ens-paris-query-dataset-records-example.json
+      - type: x-example
+        url: examples/ens-paris-query-datasets-example.json
+      - type: x-spectral-rules
+        url: rules/ens-paris-rules.yml
 common:
   - type: Website
     url: https://www.ens.psl.eu/en
@@ -84,6 +100,12 @@ common:
     url: finops/ens-paris-finops.yml
   - type: Review
     url: review.yml
+  - type: x-vocabulary
+    url: vocabulary/ens-paris-vocabulary.yml
+  - type: x-json-ld-context
+    url: json-ld/ens-paris-context.jsonld
+  - type: x-blogs
+    url: blogs/blogs.json
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

@@ -1,0 +1,63 @@
+formats:
+  - oas3
+rules:
+  ens-paris-info-title:
+    description: API must declare an info.title.
+    severity: error
+    given: $.info
+    then:
+      field: title
+      function: truthy
+  ens-paris-info-version:
+    description: API must declare an info.version (the MESR Explore API uses values like 'v2.1').
+    severity: error
+    given: $.info
+    then:
+      field: version
+      function: truthy
+  ens-paris-server-defined:
+    description: At least one server URL must be defined.
+    severity: error
+    given: $.servers
+    then:
+      function: length
+      functionOptions:
+        min: 1
+  ens-paris-server-https:
+    description: Server URLs must use HTTPS, as the MESR Explore API does.
+    severity: error
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://"
+  ens-paris-catalog-paths:
+    description: All Explore API paths are read-only catalog routes rooted at /catalog.
+    severity: warn
+    given: $.paths[*]~
+    then:
+      function: pattern
+      functionOptions:
+        match: "^/catalog"
+  ens-paris-get-only:
+    description: The Explore API exposes read-only data; only GET operations are expected.
+    severity: warn
+    given: $.paths[*][?(@property != 'get' && @property != 'parameters' && @property != 'summary' && @property != 'description')]~
+    then:
+      function: falsy
+  ens-paris-operation-summary:
+    description: Every operation should carry a summary describing the query.
+    severity: warn
+    given: $.paths[*][get,post]
+    then:
+      field: summary
+      function: truthy
+  ens-paris-records-pagination:
+    description: Record/dataset list endpoints should support limit and offset pagination parameters.
+    severity: info
+    given: $.components.parameters
+    then:
+      - field: limit
+        function: truthy
+      - field: offset
+        function: truthy

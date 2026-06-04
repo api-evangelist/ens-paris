@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/ens-paris/main/json-schema/ens-paris-records-schema.json",
+  "title": "MESR Explore API Records Response",
+  "description": "Paginated records response returned by GET /catalog/datasets/{dataset_id}/records of the MESR Opendatasoft Explore API v2.1. Derived from the published OpenAPI 3.0.3 'records' and 'record' schemas.",
+  "type": "object",
+  "properties": {
+    "total_count": {
+      "type": "integer",
+      "description": "Total number of records matching the query."
+    },
+    "results": {
+      "type": "array",
+      "description": "Array of record objects. Each record carries dataset-specific fields as additional properties.",
+      "items": {
+        "$ref": "#/$defs/record"
+      }
+    },
+    "_links": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/link"
+      }
+    }
+  },
+  "$defs": {
+    "record": {
+      "type": "object",
+      "description": "A single dataset record. Dataset-specific fields appear as additional properties.",
+      "properties": {
+        "_id": {
+          "type": "string"
+        },
+        "_timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "_size": {
+          "type": "integer"
+        },
+        "_links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/link"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "link": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string",
+          "format": "uri"
+        },
+        "rel": {
+          "type": "string",
+          "enum": [
+            "self",
+            "first",
+            "last",
+            "next",
+            "dataset",
+            "catalog"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,73 @@
+vocabulary:
+  name: ENS Paris API Vocabulary
+  description: >-
+    Controlled vocabulary for the programmatic surfaces through which École
+    Normale Supérieure de Paris data is reached: the national HAL open archive
+    (OAI-PMH and Search/REST APIs) and the French Ministry of Higher Education
+    (MESR) Opendatasoft Explore API. Terms are drawn from the real, machine-readable
+    MESR Explore API v2.1 OpenAPI description and from the HAL and OAI-PMH protocols.
+  version: 1.0.0
+  terms:
+    - term: catalog
+      definition: >-
+        The root collection of datasets exposed by the MESR Explore API, queried
+        under the /catalog path.
+      tags: [ explore-api, mesr, open-data ]
+    - term: dataset
+      definition: >-
+        A published open-data dataset in the MESR catalog (identified by a
+        dataset_id slug), in which ENS Paris appears as a higher-education establishment.
+      tags: [ explore-api, mesr, dataset ]
+    - term: record
+      definition: >-
+        A single row within a dataset, carrying dataset-specific fields plus
+        Explore API system fields such as _id, _timestamp and _size.
+      tags: [ explore-api, mesr, record ]
+    - term: dataset_id
+      definition: Human-readable identifier (slug) of a dataset used to address its records and exports.
+      tags: [ explore-api, identifier ]
+    - term: where
+      definition: >-
+        ODSQL filter expression used to select records, e.g.
+        search(uo_lib,"Normale Superieure").
+      tags: [ explore-api, query, odsql ]
+    - term: select
+      definition: ODSQL clause choosing which fields to return in each record.
+      tags: [ explore-api, query, odsql ]
+    - term: group_by
+      definition: ODSQL aggregation clause grouping records by one or more fields.
+      tags: [ explore-api, query, odsql, aggregation ]
+    - term: facet
+      definition: A field enumerated for faceted navigation of datasets or records.
+      tags: [ explore-api, faceting ]
+    - term: export
+      definition: >-
+        An endpoint returning a full dataset or catalog in a bulk format such as
+        CSV, Parquet, GPX or DCAT RDF/XML.
+      tags: [ explore-api, export, bulk ]
+    - term: total_count
+      definition: The total number of records or datasets matching a query, independent of pagination.
+      tags: [ explore-api, pagination ]
+    - term: uai
+      definition: >-
+        Unité Administrative Immatriculée code, the French national identifier
+        for an education establishment, present in MESR establishment datasets.
+      tags: [ mesr, identifier, establishment ]
+    - term: identifiant_ror
+      definition: Research Organization Registry (ROR) identifier for an establishment such as ENS.
+      tags: [ mesr, identifier, ror, research ]
+    - term: OAI-PMH
+      definition: >-
+        Open Archives Initiative Protocol for Metadata Harvesting, used to harvest
+        HAL-ENS records by collection set from https://api.archives-ouvertes.fr/oai/hal/.
+      tags: [ hal, oai-pmh, harvesting, metadata ]
+    - term: set
+      definition: >-
+        An OAI-PMH grouping (by collection, document type or discipline) used to
+        scope a harvest to ENS content.
+      tags: [ hal, oai-pmh, collection ]
+    - term: HAL Search API
+      definition: >-
+        The HAL REST/Search API at https://api.archives-ouvertes.fr/search/ for
+        querying publication metadata, filterable by collection, document type and discipline.
+      tags: [ hal, search, publications, research ]
