@@ -88,6 +88,10 @@ apis:
       - type: x-spectral-rules
         url: rules/ens-paris-rules.yml
 common:
+  - type: DomainSecurity
+    url: security/ens-paris-domain-security.yml
+  - type: Authentication
+    url: authentication/ens-paris-authentication.yml
   - type: Website
     url: https://www.ens.psl.eu/en
   - type: LinkedIn
