@@ -88,6 +88,8 @@ apis:
       - type: x-spectral-rules
         url: rules/ens-paris-rules.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/ens-paris-agentic-access.yml
   - type: DomainSecurity
     url: security/ens-paris-domain-security.yml
   - type: Authentication
