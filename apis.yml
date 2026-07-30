@@ -14,9 +14,22 @@ description: >-
   through the Ministry of Higher Education (MESR) open-data platform's
   Opendatasoft Explore API.
 type: Index
+accessModel:
+  pricing: free
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Free · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/ens-paris.png
 url: https://raw.githubusercontent.com/api-evangelist/ens-paris/refs/heads/main/apis.yml
 tags:
   - Education
@@ -30,63 +43,93 @@ created: '2026-06-03'
 modified: '2026-06-03'
 specificationVersion: '0.19'
 apis:
-  - aid: ens-paris:hal-oai-pmh
-    name: HAL-ENS Open Archive (OAI-PMH)
-    description: >-
-      HAL-ENS is the open archive hosting the scientific production of ENS Paris
-      researchers, teacher-researchers and doctoral students. It is part of the
-      national HAL platform and is harvestable via the OAI-PMH protocol; ENS
-      content can be retrieved by collection sets. No registration is required to
-      use the HAL OAI server.
-    humanURL: https://api.archives-ouvertes.fr/docs/oai
-    baseURL: https://api.archives-ouvertes.fr/oai/hal/
-    tags: [ Open Access, Research, Institutional Repository, OAI-PMH, Metadata ]
-    properties:
-      - type: Documentation
-        url: https://api.archives-ouvertes.fr/docs/oai
-  - aid: ens-paris:hal-api
-    name: HAL Search / REST API
-    description: >-
-      The national HAL open-archive REST and Search API provides programmatic
-      query access to publication metadata, including records deposited in the
-      HAL-ENS portal. Results can be filtered by collection, document type and
-      discipline.
-    humanURL: https://api.hal.science/docs/
-    baseURL: https://api.archives-ouvertes.fr/search/
-    tags: [ Open Access, Research, Search, Publications, Metadata ]
-    properties:
-      - type: Documentation
-        url: https://api.hal.science/docs/
-  - aid: ens-paris:mesr-opendata
-    name: MESR Higher Education Open Data (Explore API)
-    description: >-
-      The French Ministry of Higher Education, Research and Innovation (MESR)
-      open-data platform exposes establishment, enrolment and research datasets
-      via an Opendatasoft Explore API. ENS Paris appears as an establishment in
-      these national datasets; this is a third-party platform, not operated by
-      ENS itself.
-    humanURL: https://data.enseignementsup-recherche.gouv.fr/api/explore/v2.1/console
-    baseURL: https://data.enseignementsup-recherche.gouv.fr/api/explore/v2.1/
-    tags: [ Open Data, Higher Education, Statistics, Government, France ]
-    properties:
-      - type: Documentation
-        url: https://data.enseignementsup-recherche.gouv.fr/api/explore/v2.1/console
-      - type: OpenAPI
-        url: openapi/ens-paris-mesr-opendata.yaml
-      - type: JSONSchema
-        url: json-schema/ens-paris-records-schema.json
-      - type: JSONSchema
-        url: json-schema/ens-paris-dataset-schema.json
-      - type: x-json-structure
-        url: json-structure/ens-paris-records-structure.json
-      - type: x-json-structure
-        url: json-structure/ens-paris-dataset-structure.json
-      - type: x-example
-        url: examples/ens-paris-query-dataset-records-example.json
-      - type: x-example
-        url: examples/ens-paris-query-datasets-example.json
-      - type: x-spectral-rules
-        url: rules/ens-paris-rules.yml
+- aid: ens-paris:hal-oai-pmh
+  name: HAL-ENS Open Archive (OAI-PMH)
+  description: >-
+    HAL-ENS is the open archive hosting the scientific production of ENS Paris researchers, teacher-researchers
+    and doctoral students. It is part of the national HAL platform and is harvestable via the OAI-PMH
+    protocol; ENS content can be retrieved by collection sets. No registration is required to use the
+    HAL OAI server.
+  humanURL: https://api.archives-ouvertes.fr/docs/oai
+  baseURL: https://api.archives-ouvertes.fr/oai/hal/
+  tags:
+  - Open Access
+  - Research
+  - Institutional Repository
+  - OAI-PMH
+  - Metadata
+  properties:
+  - type: Documentation
+    url: https://api.archives-ouvertes.fr/docs/oai
+- aid: ens-paris:hal-api
+  name: HAL Search / REST API
+  description: >-
+    The national HAL open-archive REST and Search API provides programmatic query access to publication
+    metadata, including records deposited in the HAL-ENS portal. Results can be filtered by collection,
+    document type and discipline.
+  humanURL: https://api.hal.science/docs/
+  baseURL: https://api.archives-ouvertes.fr/search/
+  tags:
+  - Open Access
+  - Research
+  - Search
+  - Publications
+  - Metadata
+  properties:
+  - type: Documentation
+    url: https://api.hal.science/docs/
+- aid: ens-paris:ens-paris-catalog-api
+  name: École Normale Supérieure de Paris Catalog API
+  description: API to enumerate datasets
+  humanURL: https://api.archives-ouvertes.fr/docs/oai
+  baseURL: https://api.archives-ouvertes.fr/oai/hal/
+  tags:
+  - Catalog
+  properties:
+  - type: OpenAPI
+    url: openapi/ens-paris-catalog-api-openapi.yml
+  - type: Documentation
+    url: https://data.enseignementsup-recherche.gouv.fr/api/explore/v2.1/console
+  - type: JSONSchema
+    url: json-schema/ens-paris-records-schema.json
+  - type: JSONSchema
+    url: json-schema/ens-paris-dataset-schema.json
+  - type: x-json-structure
+    url: json-structure/ens-paris-records-structure.json
+  - type: x-json-structure
+    url: json-structure/ens-paris-dataset-structure.json
+  - type: x-example
+    url: examples/ens-paris-query-dataset-records-example.json
+  - type: x-example
+    url: examples/ens-paris-query-datasets-example.json
+  - type: x-spectral-rules
+    url: rules/ens-paris-rules.yml
+- aid: ens-paris:ens-paris-dataset-api
+  name: École Normale Supérieure de Paris Dataset API
+  description: API to work on records
+  humanURL: https://api.archives-ouvertes.fr/docs/oai
+  baseURL: https://api.archives-ouvertes.fr/oai/hal/
+  tags:
+  - Dataset
+  properties:
+  - type: OpenAPI
+    url: openapi/ens-paris-dataset-api-openapi.yml
+  - type: Documentation
+    url: https://data.enseignementsup-recherche.gouv.fr/api/explore/v2.1/console
+  - type: JSONSchema
+    url: json-schema/ens-paris-records-schema.json
+  - type: JSONSchema
+    url: json-schema/ens-paris-dataset-schema.json
+  - type: x-json-structure
+    url: json-structure/ens-paris-records-structure.json
+  - type: x-json-structure
+    url: json-structure/ens-paris-dataset-structure.json
+  - type: x-example
+    url: examples/ens-paris-query-dataset-records-example.json
+  - type: x-example
+    url: examples/ens-paris-query-datasets-example.json
+  - type: x-spectral-rules
+    url: rules/ens-paris-rules.yml
 common:
   - type: AgenticAccess
     url: agentic-access/ens-paris-agentic-access.yml
