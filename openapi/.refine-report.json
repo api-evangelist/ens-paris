@@ -1,0 +1,16 @@
+{
+  "provider": "ens-paris",
+  "sources": [
+    "ens-paris-catalog-api-openapi.yml",
+    "ens-paris-dataset-api-openapi.yml"
+  ],
+  "outputs": [
+    "ens-paris-catalog-api-openapi.yml",
+    "ens-paris-dataset-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
