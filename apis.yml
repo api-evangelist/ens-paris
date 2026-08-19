@@ -41,7 +41,7 @@ tags:
   - France
 created: '2026-06-03'
 modified: '2026-06-03'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: ens-paris:hal-oai-pmh
   name: HAL-ENS Open Archive (OAI-PMH)
