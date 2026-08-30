@@ -1,158 +1,217 @@
 ---
 aid: ens-paris
 name: École Normale Supérieure de Paris
+x-type: university
+x-category: Public Research University
 description: >-
-  École Normale Supérieure de Paris (ENS, rue d'Ulm) is a leading French grande
-  école and constituent member of Université PSL (Paris Sciences & Lettres),
-  ranked #86 in the QS World University Rankings 2025. ENS operates 15
-  departments, 35 research laboratories and a network of libraries. ENS does not
-  publish a first-party developer portal or documented institutional API; its
-  programmatic surface is reached indirectly via national French research and
-  higher-education open infrastructure. Researcher output is deposited in the
-  HAL-ENS open archive, which is harvestable through the national HAL OAI-PMH
-  endpoint and the HAL REST/Search API, and ENS establishment data is exposed
-  through the Ministry of Higher Education (MESR) open-data platform's
-  Opendatasoft Explore API.
+  École normale supérieure - PSL (ENS, rue d'Ulm) is a French grande école and constituent
+  institution of Université PSL, running 15 departments, 35 research laboratories and a
+  ten-library network in the Quartier latin of Paris. ENS publishes no developer portal, no
+  OpenAPI description and no API key programme, and this profile does not pretend otherwise.
+  What it does operate, verified live on 2026-08-30, is two machine-readable surfaces on its own
+  domain: a SAML 2.0 / Shibboleth identity provider at federation.ens.psl.eu, registered in the
+  RENATER Fédération Éducation-Recherche with scopes ens.fr and ens.psl.eu; and the ENS-PSL
+  library catalogue at catalogue.bib.ens.psl.eu, a Koha deployment exposing an unauthenticated
+  REST API and an OAI-PMH 2.0 provider whose Identify names the repository "bibliothèques de
+  l'ENS-PSL". Alongside those, ENS holds one tenant relationship worth recording — the ENS-PARIS
+  collection inside the national HAL open archive, operated by CCSD/CNRS, harvestable as the
+  OAI-PMH set collection:ENS-PARIS and queryable through HAL's ENS-scoped Search API. An earlier
+  version of this profile credited ENS with the French Ministry of Higher Education's
+  Opendatasoft Explore API; that contract is Opendatasoft's, deployed by the ministry, and it and
+  everything derived from it were removed on 2026-08-30.
 type: Index
 deliveryModel:
   model: saas
   open_source: false
-  commercial: true
+  commercial: false
   callable_host: true
-  label: Hosted service · you call their endpoint
+  label: Institution-operated endpoints · you call their host
   confidence: high
   source:
-  - openapi
-  - pricing
-  generated: '2026-08-28'
-  method: derived
+  - probed
+  generated: '2026-08-30'
+  method: probed
 accessModel:
   pricing: free
-  onboarding: self-serve
+  onboarding: open
   trial: false
   try_now: true
-  public: false
-  label: Free · Self-serve signup
+  public: true
+  label: Free · No registration for public reads; federated identity otherwise
   confidence: high
   source:
-  - plans
+  - probed
   - authentication
-  generated: '2026-07-22'
-  method: derived
-position: Consumer
-access: 3rd-Party
+  generated: '2026-08-30'
+  method: probed
+position: Provider
+access: Public
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/ens-paris.png
 url: https://raw.githubusercontent.com/api-evangelist/ens-paris/refs/heads/main/apis.yml
 tags:
-  - Education
-  - Higher Education
   - University
-  - Research
-  - Open Data
-  - Open Access
+  - Higher Education
+  - Education
   - France
-created: '2026-06-03'
-modified: '2026-06-03'
-specificationVersion: '0.23'
-apis:
-- aid: ens-paris:hal-oai-pmh
-  name: HAL-ENS Open Archive (OAI-PMH)
-  description: >-
-    HAL-ENS is the open archive hosting the scientific production of ENS Paris researchers, teacher-researchers
-    and doctoral students. It is part of the national HAL platform and is harvestable via the OAI-PMH
-    protocol; ENS content can be retrieved by collection sets. No registration is required to use the
-    HAL OAI server.
-  humanURL: https://api.archives-ouvertes.fr/docs/oai
-  baseURL: https://api.archives-ouvertes.fr/oai/hal/
-  tags:
-  - Open Access
+  - Université PSL
   - Research
-  - Institutional Repository
+  - Identity Federation
+  - Library
+  - Open Access
+  - OAI-PMH
+specificationVersion: '0.23'
+created: '2026-06-03'
+modified: '2026-08-30'
+x-coverage:
+  state: covered
+  reason: covered
+  detail: >-
+    ENS-PSL operates no developer portal, no published OpenAPI and no API key programme, and a
+    subdomain sweep found nothing at api., data., developer., opendata., gitlab. or git. under
+    ens.psl.eu. Two institution-operated machine-readable surfaces were nonetheless found and
+    verified live: the ENS-PSL Shibboleth SAML identity provider and the ENS-PSL Koha library
+    catalogue (public REST routes plus an OAI-PMH 2.0 provider). One tenant relationship is
+    recorded: the ENS-PARIS collection on the national HAL platform. Two contracts previously
+    attributed to ENS — the Opendatasoft Explore API v2.1 running on the French Ministry's
+    data.enseignementsup-recherche.gouv.fr portal, with info.contact support@opendatasoft.com
+    and license "Copyright Opendatasoft" — were vendor contracts and were removed together with
+    every schema, structure, example, ruleset and collection derived from them. No ENS Figshare
+    tenancy exists: ens.figshare.com and ens-psl.figshare.com return the same empty HTTP 202 as a
+    nonsense subdomain, so the host is a wildcard and not evidence of a tenancy.
+  generated: '2026-08-30'
+  method: probed
+  evidence:
+    - url: https://federation.ens.psl.eu/idp/shibboleth
+      status: 200
+    - url: https://metadata.federation.renater.fr/renater/main/main-idps-renater-metadata.xml
+      status: 200
+    - url: https://catalogue.bib.ens.psl.eu/cgi-bin/koha/oai.pl?verb=Identify
+      status: 200
+    - url: https://catalogue.bib.ens.psl.eu/api/v1/public/libraries
+      status: 200
+    - url: 'https://api.archives-ouvertes.fr/oai/hal/?verb=ListIdentifiers&metadataPrefix=oai_dc&set=collection:ENS-PARIS'
+      status: 200
+    - url: https://www.ens.psl.eu/en
+      status: 200
+    - url: https://www.ens.psl.eu/jsonapi
+      status: 404
+    - url: https://ens.figshare.com
+      status: 202
+apis:
+- aid: ens-paris:identity-federation
+  name: ENS-PSL Identity Provider (SAML 2.0 / Shibboleth)
+  x-operator: institution
+  description: >-
+    ENS-PSL runs its own Shibboleth identity provider under its own registrable domain. The SAML 2.0
+    entity descriptor is served at https://federation.ens.psl.eu/idp/shibboleth (HTTP 200,
+    application/xml) and declares SingleSignOnService endpoints for the HTTP-POST and HTTP-Redirect
+    bindings plus the SAML 1.x Shibboleth AuthnRequest profile. The entity is registered in the
+    RENATER Fédération Éducation-Recherche under OrganizationName "Ecole Normale Supérieure de
+    Paris", asserting shibmd:Scope ens.fr and ens.psl.eu. This is the one surface ENS both operates
+    and describes in a machine-readable format; there is no self-serve access — relying parties join
+    through the federation.
+  humanURL: https://services.renater.fr/federation/en/index
+  baseURL: https://federation.ens.psl.eu/idp/
+  tags:
+  - Identity Federation
+  - SAML
+  - Shibboleth
+  - Single Sign-On
+  - RENATER
+  properties:
+  - type: IdentityFederation
+    url: https://federation.ens.psl.eu/idp/shibboleth
+  - type: Documentation
+    url: https://services.renater.fr/federation/en/index
+  - type: Conformance
+    url: conformance/ens-paris-conformance.yml
+  - type: Authentication
+    url: authentication/ens-paris-authentication.yml
+- aid: ens-paris:library-catalog
+  name: ENS-PSL Library Catalogue (Koha REST + OAI-PMH)
+  x-operator: institution
+  description: >-
+    The catalogue of the ten ENS-PSL libraries, hosted at catalogue.bib.ens.psl.eu under the
+    institution's own domain and integrated by BibLibre. Two machine-readable interfaces answer
+    publicly. The Koha REST API v1 serves unauthenticated /api/v1/public/* routes — verified against
+    /api/v1/public/libraries, which returns the real ENS branch records with @ens.psl.eu contact
+    addresses — and browses through a Swagger UI at /api/v1/.html; patron and staff routes require a
+    library credential and no registration path is published. An OAI-PMH 2.0 provider at
+    /cgi-bin/koha/oai.pl identifies as "bibliothèques de l'ENS-PSL" and exposes one set, CATALOGUE.
+    Note the OAI provider advertises a baseURL of /opac/oai.pl which returns 404 from outside; the
+    working base is the cgi-bin path recorded here. The interface contract is Koha's own — an
+    open-source ILS every Koha library ships — so no OpenAPI is stored under this institution; the
+    deployment, the domain and the records are ENS's.
+  humanURL: https://catalogue.bib.ens.psl.eu/api/v1/.html
+  baseURL: https://catalogue.bib.ens.psl.eu/api/v1/
+  tags:
+  - Library
+  - Library Catalog
+  - Koha
   - OAI-PMH
   - Metadata
   properties:
+  - type: LibraryCatalog
+    url: https://catalogue.bib.ens.psl.eu/
+  - type: APIReference
+    url: https://catalogue.bib.ens.psl.eu/api/v1/.html
+  - type: x-oai-pmh
+    url: https://catalogue.bib.ens.psl.eu/cgi-bin/koha/oai.pl?verb=Identify
+  - type: Documentation
+    url: https://bib.ens.psl.eu/
+  - type: Conformance
+    url: conformance/ens-paris-conformance.yml
+- aid: ens-paris:hal-ens
+  name: HAL-ENS Open Archive — ENS-PARIS collection
+  x-operator: tenant
+  description: >-
+    ENS research output is deposited into the ENS-PARIS collection of HAL, the French national open
+    archive operated by CCSD (CNRS). The collection is real and substantial — HAL's ENS-scoped Search
+    API returns 84,784 records — and it is harvestable as the OAI-PMH set collection:ENS-PARIS. The
+    data and the curation are ENS's; the platform, the protocol endpoints and the API contract are
+    CCSD's, so nothing is stored under this institution and the surface is recorded as a tenant
+    relationship rather than an ENS API. The ENS portal front end at hal-ens.archives-ouvertes.fr
+    is live but serves a bot challenge to automated clients.
+  humanURL: https://hal-ens.archives-ouvertes.fr/
+  baseURL: https://api.archives-ouvertes.fr/search/ENS-PARIS/
+  tags:
+  - Research
+  - Open Access
+  - Institutional Repository
+  - OAI-PMH
+  - HAL
+  properties:
+  - type: ResearchRepository
+    url: https://hal-ens.archives-ouvertes.fr/
+  - type: x-oai-pmh
+    url: 'https://api.archives-ouvertes.fr/oai/hal/?verb=ListIdentifiers&metadataPrefix=oai_dc&set=collection:ENS-PARIS'
   - type: Documentation
     url: https://api.archives-ouvertes.fr/docs/oai
-- aid: ens-paris:hal-api
-  name: HAL Search / REST API
-  description: >-
-    The national HAL open-archive REST and Search API provides programmatic query access to publication
-    metadata, including records deposited in the HAL-ENS portal. Results can be filtered by collection,
-    document type and discipline.
-  humanURL: https://api.hal.science/docs/
-  baseURL: https://api.archives-ouvertes.fr/search/
-  tags:
-  - Open Access
-  - Research
-  - Search
-  - Publications
-  - Metadata
-  properties:
-  - type: Documentation
+  - type: APIReference
     url: https://api.hal.science/docs/
-- aid: ens-paris:ens-paris-catalog-api
-  name: École Normale Supérieure de Paris Catalog API
-  description: API to enumerate datasets
-  humanURL: https://api.archives-ouvertes.fr/docs/oai
-  baseURL: https://api.archives-ouvertes.fr/oai/hal/
-  tags:
-  - Catalog
-  properties:
-  - type: OpenAPI
-    url: openapi/ens-paris-catalog-api-openapi.yml
-  - type: Documentation
-    url: https://data.enseignementsup-recherche.gouv.fr/api/explore/v2.1/console
-  - type: JSONSchema
-    url: json-schema/ens-paris-records-schema.json
-  - type: JSONSchema
-    url: json-schema/ens-paris-dataset-schema.json
-  - type: x-json-structure
-    url: json-structure/ens-paris-records-structure.json
-  - type: x-json-structure
-    url: json-structure/ens-paris-dataset-structure.json
-  - type: x-example
-    url: examples/ens-paris-query-dataset-records-example.json
-  - type: x-example
-    url: examples/ens-paris-query-datasets-example.json
-  - type: x-spectral-rules
-    url: rules/ens-paris-rules.yml
-- aid: ens-paris:ens-paris-dataset-api
-  name: École Normale Supérieure de Paris Dataset API
-  description: API to work on records
-  humanURL: https://api.archives-ouvertes.fr/docs/oai
-  baseURL: https://api.archives-ouvertes.fr/oai/hal/
-  tags:
-  - Dataset
-  properties:
-  - type: OpenAPI
-    url: openapi/ens-paris-dataset-api-openapi.yml
-  - type: Documentation
-    url: https://data.enseignementsup-recherche.gouv.fr/api/explore/v2.1/console
-  - type: JSONSchema
-    url: json-schema/ens-paris-records-schema.json
-  - type: JSONSchema
-    url: json-schema/ens-paris-dataset-schema.json
-  - type: x-json-structure
-    url: json-structure/ens-paris-records-structure.json
-  - type: x-json-structure
-    url: json-structure/ens-paris-dataset-structure.json
-  - type: x-example
-    url: examples/ens-paris-query-dataset-records-example.json
-  - type: x-example
-    url: examples/ens-paris-query-datasets-example.json
-  - type: x-spectral-rules
-    url: rules/ens-paris-rules.yml
+  - type: Conformance
+    url: conformance/ens-paris-conformance.yml
 common:
-  - type: AgenticAccess
-    url: agentic-access/ens-paris-agentic-access.yml
-  - type: DomainSecurity
-    url: security/ens-paris-domain-security.yml
-  - type: Authentication
-    url: authentication/ens-paris-authentication.yml
   - type: Website
     url: https://www.ens.psl.eu/en
   - type: LinkedIn
     url: https://www.linkedin.com/school/ecole-normale-superieure/
+  - type: TermsOfService
+    url: https://www.ens.psl.eu/mentions-legales
+  - type: BlogRSS
+    url: https://www.ens.psl.eu/en/rss.xml
+  - type: IdentityFederation
+    url: https://federation.ens.psl.eu/idp/shibboleth
+  - type: LibraryCatalog
+    url: https://catalogue.bib.ens.psl.eu/
+  - type: ResearchRepository
+    url: https://hal-ens.archives-ouvertes.fr/
+  - type: Conformance
+    url: conformance/ens-paris-conformance.yml
+  - type: Authentication
+    url: authentication/ens-paris-authentication.yml
+  - type: DomainSecurity
+    url: security/ens-paris-domain-security.yml
   - type: Plans
     url: plans/ens-paris-plans-pricing.yml
   - type: RateLimits
