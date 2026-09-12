@@ -2,20 +2,20 @@
   "repo": "ens-paris",
   "feeds": [
     {
-      "source": "https://www.ens.psl.eu/en/actualites",
-      "feed_url": "https://www.ens.psl.eu/en/actualites",
+      "source": "https://www.ens.psl.eu/mentions-legales",
+      "feed_url": "https://www.ens.psl.eu/mentions-legales",
       "title": "",
       "saved": 0,
       "method": "none"
     },
     {
-      "source": "https://www.ens.psl.eu/mentions-legales",
-      "feed_url": "https://www.ens.psl.eu/mentions-legales",
+      "source": "https://www.ens.psl.eu/en/actualites",
+      "feed_url": "https://www.ens.psl.eu/en/actualites",
       "title": "",
       "saved": 0,
       "method": "none"
     }
   ],
   "post_count": 0,
-  "fetched": "2026-08-30T22:33:40Z"
+  "fetched": "2026-09-06T19:17:18Z"
 }
