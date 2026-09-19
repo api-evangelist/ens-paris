@@ -116,6 +116,12 @@ apis:
   - Identity Federation
   - SAML
   - Shibboleth
+  - SSO
+  - RENATER
+  tags_raw:
+  - Identity Federation
+  - SAML
+  - Shibboleth
   - Single Sign-On
   - RENATER
   properties:
