@@ -77,15 +77,36 @@
 
 ## Tags
 
-Education, Higher Education, University, Research, Open Data, Open Access, France
+University, Higher Education, Education, France, Université PSL, Research, Identity Federation, Library, Open Access, OAI-PMH
 
 ## APIs
 
-ENS Paris does not publish a first-party developer portal or documented institutional API. The programmatic surface relevant to ENS is reached through national French research and open-data infrastructure:
+ENS-PSL publishes no developer portal, no OpenAPI description and no API key programme. It does
+operate two machine-readable surfaces on its own domain, and holds one tenant relationship on a
+national platform. All three were probed live on 2026-08-30.
 
-- **HAL-ENS Open Archive (OAI-PMH)** — ENS researcher output deposited in HAL, harvestable via the national HAL OAI-PMH server. Docs: <https://api.archives-ouvertes.fr/docs/oai>
-- **HAL Search / REST API** — query publication metadata including HAL-ENS records. Docs: <https://api.hal.science/docs/>
-- **MESR Higher Education Open Data (Explore API)** — French Ministry open-data platform exposing ENS establishment/enrolment data (third-party). Docs: <https://data.enseignementsup-recherche.gouv.fr/api/explore/v2.1/console>
+- **ENS-PSL Identity Provider (SAML 2.0 / Shibboleth)** — *operator: institution*. SAML entity
+  descriptor at <https://federation.ens.psl.eu/idp/shibboleth> (HTTP 200, `application/xml`),
+  registered in the RENATER Fédération Éducation-Recherche with `shibmd:Scope` `ens.fr` and
+  `ens.psl.eu`.
+- **ENS-PSL Library Catalogue (Koha REST + OAI-PMH)** — *operator: institution*. Unauthenticated
+  REST routes under <https://catalogue.bib.ens.psl.eu/api/v1/public/>, browsable at
+  <https://catalogue.bib.ens.psl.eu/api/v1/.html>; OAI-PMH 2.0 provider at
+  <https://catalogue.bib.ens.psl.eu/cgi-bin/koha/oai.pl?verb=Identify>, identifying as
+  "bibliothèques de l'ENS-PSL". The interface contract is Koha's, so no OpenAPI is stored here.
+- **HAL-ENS Open Archive, ENS-PARIS collection** — *operator: tenant*. ENS deposits inside the
+  national HAL archive run by CCSD/CNRS; harvestable as OAI-PMH set `collection:ENS-PARIS`, and
+  84,784 records are returned by HAL's ENS-scoped Search API. Docs:
+  <https://api.archives-ouvertes.fr/docs/oai>
+
+### Removed on 2026-08-30 — vendor contract, not ENS's
+
+Two OpenAPI definitions previously in this repository described the **Opendatasoft Explore API
+v2.1** running on the French Ministry of Higher Education portal
+`data.enseignementsup-recherche.gouv.fr` — `info.contact: support@opendatasoft.com`, license
+"Copyright Opendatasoft". ENS neither operates that portal nor is a tenant of it; it is a record
+inside someone else's dataset. Both specs, the pre-refine original, and every schema, structure,
+example, ruleset, agentic-access profile and collection derived from them were removed.
 
 ## Plans / Rate Limits / FinOps
 
@@ -96,17 +117,41 @@ ENS Paris does not publish a first-party developer portal or documented institut
 ## Timestamps
 
 - **Created:** 2026-06-03
-- **Modified:** 2026-06-03
+- **Modified:** 2026-08-30
 
 ## Common Properties
 
 - Website: <https://www.ens.psl.eu/en>
+- Legal notice / terms: <https://www.ens.psl.eu/mentions-legales>
+- News RSS: <https://www.ens.psl.eu/en/rss.xml>
+- Identity federation: <https://federation.ens.psl.eu/idp/shibboleth>
+- Library catalogue: <https://catalogue.bib.ens.psl.eu/>
+- Research repository: <https://hal-ens.archives-ouvertes.fr/>
 - LinkedIn: <https://www.linkedin.com/school/ecole-normale-superieure/>
+- Conformance: [conformance/ens-paris-conformance.yml](conformance/ens-paris-conformance.yml)
+- Authentication: [authentication/ens-paris-authentication.yml](authentication/ens-paris-authentication.yml)
 - Plans, Rate Limits, FinOps, Review (see files above and [review.yml](review.yml))
 
 ## Notes
 
-All endpoints in this profile were probed live on 2026-06-03; no endpoints were fabricated. ENS itself exposes no documented developer API — the cataloged APIs are national/third-party platforms (HAL, MESR open data) that carry ENS-relevant data. No official ENS Paris GitHub organization exists at `github.com/ens-paris` (HTTP 404). The LinkedIn school page is included by standard slug; LinkedIn returns HTTP 999 to automated fetchers, so it was not directly retrievable.
+Re-profiled 2026-08-30 under the API Evangelist university pipeline, which settles **who operates
+each surface** before saving anything. Every endpoint in this profile was probed live; none was
+fabricated.
+
+- ENS publishes no `llms.txt` (404), no `/jsonapi` or `/api` on the main site (404), and nothing
+  answers at `api.`, `data.`, `developer.`, `opendata.`, `git.` or `gitlab.` under `ens.psl.eu`.
+- No official ENS Paris GitHub organization was found (`github.com/ens-paris`, `github.com/ENSPSL`,
+  `github.com/ENS-Paris` all 404).
+- **No ENS Figshare tenancy exists.** `ens.figshare.com` and `ens-psl.figshare.com` return the same
+  empty HTTP 202 as a nonsense subdomain, so the host is a wildcard, not evidence of a tenancy.
+- `moodle.ens.psl.eu` is a live institution-hosted Moodle with a SAML service provider registered in
+  RENATER, but every LTI path probed redirects to the site home, so no LTI conformance is claimed.
+- The library OAI-PMH provider advertises a baseURL of `/opac/oai.pl` that returns 404 from outside;
+  the working base is `/cgi-bin/koha/oai.pl`.
+- The LinkedIn school page returns HTTP 999 to automated fetchers — a bot block, not a dead link.
+- ENS-PSL Kin Score conformance hits under the `education` regime: `saml`, `shibboleth` and
+  `oai-pmh` (institution-operated), plus `oai-pmh` via the HAL tenancy. See
+  [conformance/ens-paris-conformance.yml](conformance/ens-paris-conformance.yml).
 
 ## Maintainers
 

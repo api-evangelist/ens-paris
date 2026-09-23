@@ -1,0 +1,26 @@
+# Front Door AI Index — ens-paris — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: ens-paris
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.ens.psl.eu
+  final_host: www.ens.psl.eu
+  ownership: own
+  owner: ens-paris
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 1
+  host_score: 1
+  density: 0.59
+  words: 1686
+  tiers:
+    agentic: 0
+    core: 0
+    model: 1
+  ambiguous: 3
+  top_terms:
+    intelligence: 3
+    Claude: 1

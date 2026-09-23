@@ -3,7 +3,7 @@ name: École Normale Supérieure de Paris
 description: École Normale Supérieure de Paris public developer/API footprint review for APIs.json cataloging.
 url: https://raw.githubusercontent.com/api-evangelist/ens-paris/refs/heads/main/review.yml
 created: '2026-06-03'
-modified: '2026-06-03'
+modified: '2026-08-30'
 reviews:
   - date: '2026-06-03'
     rating: 2
@@ -43,3 +43,62 @@ reviews:
       - url: https://www.linkedin.com/school/ecole-normale-superieure/
         status: 999
         note: LinkedIn school page; HTTP 999 returned to automated fetch.
+  - date: '2026-08-30'
+    rating: 3
+    method: probed
+    summary: >-
+      Re-profiled under the API Evangelist university pipeline, which settles operator attribution
+      before saving any contract. The June review's conclusion — that ENS runs no first-party API —
+      was half right and half a misattribution. The MESR "Explore" contract catalogued in June is
+      the Opendatasoft Explore API v2.1 (info.contact support@opendatasoft.com, license "Copyright
+      Opendatasoft") deployed by the French Ministry; ENS neither operates it nor is a tenant of it,
+      so both refined specs, the pre-refine original and every derived artifact were removed. In
+      their place, two genuinely institution-operated machine-readable surfaces were found that the
+      June pass missed: a Shibboleth SAML 2.0 identity provider at federation.ens.psl.eu registered
+      in RENATER, and a Koha library catalogue at catalogue.bib.ens.psl.eu serving public REST
+      routes and an OAI-PMH 2.0 provider. The catalogue's earliest OAI datestamp is 2026-05-19, so
+      it went live at roughly the moment of the June review, when the legacy halley.ens.fr host was
+      already dead. HAL is retained as a tenant relationship, not an ENS API.
+    endpoints:
+      - url: https://federation.ens.psl.eu/idp/shibboleth
+        status: 200
+        note: ENS-PSL SAML 2.0 IdP metadata, application/xml, 14730 bytes — institution-operated.
+      - url: https://metadata.federation.renater.fr/renater/main/main-idps-renater-metadata.xml
+        status: 200
+        note: RENATER IdP aggregate carries the ENS entity, shibmd:Scope ens.fr + ens.psl.eu.
+      - url: https://federation.ens.psl.eu/idp/profile/SAML2/Redirect/SSO
+        status: 400
+        note: Live SSO endpoint; 400 is correct for a request with no SAMLRequest.
+      - url: https://catalogue.bib.ens.psl.eu/cgi-bin/koha/oai.pl?verb=Identify
+        status: 200
+        note: OAI-PMH 2.0, repositoryName "bibliothèques de l'ENS-PSL" — institution-operated.
+      - url: https://catalogue.bib.ens.psl.eu/opac/oai.pl?verb=Identify
+        status: 404
+        note: The baseURL the OAI provider advertises for itself is unreachable from outside.
+      - url: https://catalogue.bib.ens.psl.eu/api/v1/public/libraries
+        status: 200
+        note: Koha REST v1 public route returning real ENS branch records, no credential required.
+      - url: https://catalogue.bib.ens.psl.eu/api/v1/.html
+        status: 200
+        note: Koha REST API reference (Swagger UI) for the ENS deployment.
+      - url: 'https://api.archives-ouvertes.fr/oai/hal/?verb=ListIdentifiers&metadataPrefix=oai_dc&set=collection:ENS-PARIS'
+        status: 200
+        note: ENS-PARIS OAI set on the national HAL platform — tenant, operated by CCSD/CNRS.
+      - url: 'https://api.archives-ouvertes.fr/search/ENS-PARIS/?q=*:*&rows=1&wt=json'
+        status: 200
+        note: HAL Search scoped to the ENS portal; numFound 84,784.
+      - url: https://ens.figshare.com
+        status: 202
+        note: Empty 202 — identical to a nonsense subdomain; a wildcard, not an ENS Figshare tenancy.
+      - url: https://moodle.ens.psl.eu/mod/lti/auth.php
+        status: 301
+        note: Institution-hosted Moodle, but LTI paths redirect to home; no LTI conformance claimed.
+      - url: https://www.ens.psl.eu/jsonapi
+        status: 404
+        note: No JSON:API on the main Drupal site.
+      - url: https://www.ens.psl.eu/llms.txt
+        status: 404
+        note: No llms.txt published.
+      - url: https://www.ens.psl.eu/en/rss.xml
+        status: 200
+        note: Institution news feed, application/rss+xml.

@@ -3,6 +3,11 @@ specificationVersion: '1.0'
 schema: https://www.finops.org/framework/
 provider: École Normale Supérieure de Paris
 providerId: ens-paris
+generated: '2026-08-30'
+method: generated
+source: >-
+  Written by API Evangelist from the institution's public posture; no pricing, rate-limit or
+  billing document is published by ENS-PSL. Not an ENS-authored artifact.
 created: '2026-06-03'
 modified: '2026-06-03'
 reconciled: false

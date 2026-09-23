@@ -1,73 +1,68 @@
 vocabulary:
-  name: ENS Paris API Vocabulary
+  name: ENS-PSL Programmable Surface Vocabulary
   description: >-
-    Controlled vocabulary for the programmatic surfaces through which École
-    Normale Supérieure de Paris data is reached: the national HAL open archive
-    (OAI-PMH and Search/REST APIs) and the French Ministry of Higher Education
-    (MESR) Opendatasoft Explore API. Terms are drawn from the real, machine-readable
-    MESR Explore API v2.1 OpenAPI description and from the HAL and OAI-PMH protocols.
-  version: 1.0.0
+    Controlled vocabulary for the machine-readable surfaces École Normale Supérieure - PSL
+    actually operates or participates in: the institution's SAML/Shibboleth identity provider,
+    the ENS-PSL library catalogue (Koha REST + OAI-PMH), and the ENS-PARIS collection inside the
+    national HAL open archive. Terms are drawn from responses observed live on 2026-08-30. A
+    previous version of this file was built from the French Ministry (MESR) Opendatasoft Explore
+    API — a contract ENS does not operate — and has been replaced.
+  version: 2.0.0
+  generated: '2026-08-30'
+  method: derived
+  source: live probe responses from federation.ens.psl.eu, catalogue.bib.ens.psl.eu and api.archives-ouvertes.fr
   terms:
-    - term: catalog
+    - term: entityID
       definition: >-
-        The root collection of datasets exposed by the MESR Explore API, queried
-        under the /catalog path.
-      tags: [ explore-api, mesr, open-data ]
-    - term: dataset
+        The SAML identifier of the ENS-PSL identity provider,
+        https://federation.ens.psl.eu/idp/shibboleth, used by service providers to address it.
+      tags: [saml, shibboleth, identity-federation]
+    - term: scope
       definition: >-
-        A published open-data dataset in the MESR catalog (identified by a
-        dataset_id slug), in which ENS Paris appears as a higher-education establishment.
-      tags: [ explore-api, mesr, dataset ]
-    - term: record
+        shibmd:Scope value asserted by the ENS-PSL IdP — `ens.fr` and `ens.psl.eu` — declaring the
+        domains for which it may assert scoped attributes.
+      tags: [saml, shibboleth, attributes]
+    - term: SingleSignOnService
       definition: >-
-        A single row within a dataset, carrying dataset-specific fields plus
-        Explore API system fields such as _id, _timestamp and _size.
-      tags: [ explore-api, mesr, record ]
-    - term: dataset_id
-      definition: Human-readable identifier (slug) of a dataset used to address its records and exports.
-      tags: [ explore-api, identifier ]
-    - term: where
+        SAML endpoint at which the ENS-PSL IdP accepts authentication requests, published for the
+        HTTP-POST and HTTP-Redirect bindings.
+      tags: [saml, endpoint]
+    - term: federation
       definition: >-
-        ODSQL filter expression used to select records, e.g.
-        search(uo_lib,"Normale Superieure").
-      tags: [ explore-api, query, odsql ]
-    - term: select
-      definition: ODSQL clause choosing which fields to return in each record.
-      tags: [ explore-api, query, odsql ]
-    - term: group_by
-      definition: ODSQL aggregation clause grouping records by one or more fields.
-      tags: [ explore-api, query, odsql, aggregation ]
-    - term: facet
-      definition: A field enumerated for faceted navigation of datasets or records.
-      tags: [ explore-api, faceting ]
-    - term: export
+        The RENATER Fédération Éducation-Recherche, the French national identity federation whose
+        metadata aggregate carries the ENS-PSL entity.
+      tags: [identity-federation, renater]
+    - term: library_id
       definition: >-
-        An endpoint returning a full dataset or catalog in a bulk format such as
-        CSV, Parquet, GPX or DCAT RDF/XML.
-      tags: [ explore-api, export, bulk ]
-    - term: total_count
-      definition: The total number of records or datasets matching a query, independent of pagination.
-      tags: [ explore-api, pagination ]
-    - term: uai
+        Koha branch code identifying one of the ENS-PSL libraries (for example `APC` for the
+        Montrouge agrégation library), returned by /api/v1/public/libraries.
+      tags: [library, koha, identifier]
+    - term: biblio
       definition: >-
-        Unité Administrative Immatriculée code, the French national identifier
-        for an education establishment, present in MESR establishment datasets.
-      tags: [ mesr, identifier, establishment ]
-    - term: identifiant_ror
-      definition: Research Organization Registry (ROR) identifier for an establishment such as ENS.
-      tags: [ mesr, identifier, ror, research ]
-    - term: OAI-PMH
+        A bibliographic record in the ENS-PSL Koha catalogue, the unit addressed by the public
+        REST routes and exported over OAI-PMH.
+      tags: [library, koha, record]
+    - term: item
+      definition: A physical or electronic copy attached to a biblio in the ENS-PSL catalogue.
+      tags: [library, koha, holdings]
+    - term: setSpec
       definition: >-
-        Open Archives Initiative Protocol for Metadata Harvesting, used to harvest
-        HAL-ENS records by collection set from https://api.archives-ouvertes.fr/oai/hal/.
-      tags: [ hal, oai-pmh, harvesting, metadata ]
-    - term: set
+        OAI-PMH set identifier. The ENS-PSL catalogue exposes one, `CATALOGUE`; the national HAL
+        provider exposes ENS output as `collection:ENS-PARIS`.
+      tags: [oai-pmh, harvesting]
+    - term: metadataPrefix
       definition: >-
-        An OAI-PMH grouping (by collection, document type or discipline) used to
-        scope a harvest to ENS content.
-      tags: [ hal, oai-pmh, collection ]
-    - term: HAL Search API
+        OAI-PMH metadata format requested by a harvester, e.g. `oai_dc`, supported by both the
+        ENS-PSL catalogue and HAL.
+      tags: [oai-pmh, metadata]
+    - term: resumptionToken
+      definition: OAI-PMH continuation token for paging a harvest of ENS records.
+      tags: [oai-pmh, paging]
+    - term: collection
       definition: >-
-        The HAL REST/Search API at https://api.archives-ouvertes.fr/search/ for
-        querying publication metadata, filterable by collection, document type and discipline.
-      tags: [ hal, search, publications, research ]
+        A HAL portal grouping. `ENS-PARIS` is the ENS collection; it is ENS's curation on CCSD's
+        platform, not an ENS-operated endpoint.
+      tags: [hal, repository, tenant]
+    - term: docid
+      definition: HAL internal identifier of a deposit returned by the HAL Search API.
+      tags: [hal, identifier]
