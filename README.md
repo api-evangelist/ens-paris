@@ -1,4 +1,4 @@
-# École Normale Supérieure de Paris (ens-paris)
+# École Normale Supérieure de Paris
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,95 +64,117 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-École Normale Supérieure de Paris (ENS, rue d'Ulm) is a leading French grande école and constituent member of Université PSL (Paris Sciences & Lettres), ranked #86 in the QS World University Rankings 2025. This repository catalogs the institution's public developer/API footprint as an [APIs.json](https://apisjson.org) profile.
+École normale supérieure - PSL (ENS, rue d'Ulm) is a French grande école and constituent institution of Université PSL, running 15 departments, 35 research laboratories and a ten-library network in the Quartier latin of Paris. ENS publishes no developer portal, no OpenAPI description and no API key programme, and this profile does not pretend otherwise. What it does operate, verified live on 2026-08-30, is two machine-readable surfaces on its own domain: a SAML 2.0 / Shibboleth identity provider at federation.ens.psl.eu, registered in the RENATER Fédération Éducation-Recherche with scopes ens.fr and ens.psl.eu; and the ENS-PSL library catalogue at catalogue.bib.ens.psl.eu, a Koha deployment exposing an unauthenticated REST API and an OAI-PMH 2.0 provider whose Identify names the repository "bibliothèques de l'ENS-PSL". Alongside those, ENS holds one tenant relationship worth recording — the ENS-PARIS collection inside the national HAL open archive, operated by CCSD/CNRS, harvestable as the OAI-PMH set collection:ENS-PARIS and queryable through HAL's ENS-scoped Search API. An earlier version of this profile credited ENS with the French Ministry of Higher Education's Opendatasoft Explore API; that contract is Opendatasoft's, deployed by the ministry, and it and everything derived from it were removed on 2026-08-30.
 
-- APIs.json: <https://raw.githubusercontent.com/api-evangelist/ens-paris/refs/heads/main/apis.yml>
-- Run with Naftiko: <https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=ens-paris-api-evangelist&utm_content=repo>
+**Areas:** University · Higher Education · Education · France · Université PSL · Research · Identity Federation · Library · Open Access · OAI-PMH
 
-## Type
+## École Normale Supérieure de Paris on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for École Normale Supérieure de Paris is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/ens-paris/](https://apis.io/providers/ens-paris/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (3)
 
-University, Higher Education, Education, France, Université PSL, Research, Identity Federation, Library, Open Access, OAI-PMH
+- [ENS-PSL Identity Provider (SAML 2.0 / Shibboleth)](https://apis.io/apis/ens-paris/identity-federation/) — ENS-PSL runs its own Shibboleth identity provider under its own registrable domain. The SAML 2.0 entity descriptor is served at…
+- [ENS-PSL Library Catalogue (Koha REST + OAI-PMH)](https://apis.io/apis/ens-paris/library-catalog/) — The catalogue of the ten ENS-PSL libraries, hosted at catalogue.bib.ens.psl.eu under the institution's own domain and integrated by BibLibre. Two…
+- [HAL-ENS Open Archive — ENS-PARIS collection](https://apis.io/apis/ens-paris/hal-ens/) — ENS research output is deposited into the ENS-PARIS collection of HAL, the French national open archive operated by CCSD (CNRS). The collection is real and…
 
-## APIs
+### Published properties
 
-ENS-PSL publishes no developer portal, no OpenAPI description and no API key programme. It does
-operate two machine-readable surfaces on its own domain, and holds one tenant relationship on a
-national platform. All three were probed live on 2026-08-30.
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- **ENS-PSL Identity Provider (SAML 2.0 / Shibboleth)** — *operator: institution*. SAML entity
-  descriptor at <https://federation.ens.psl.eu/idp/shibboleth> (HTTP 200, `application/xml`),
-  registered in the RENATER Fédération Éducation-Recherche with `shibmd:Scope` `ens.fr` and
-  `ens.psl.eu`.
-- **ENS-PSL Library Catalogue (Koha REST + OAI-PMH)** — *operator: institution*. Unauthenticated
-  REST routes under <https://catalogue.bib.ens.psl.eu/api/v1/public/>, browsable at
-  <https://catalogue.bib.ens.psl.eu/api/v1/.html>; OAI-PMH 2.0 provider at
-  <https://catalogue.bib.ens.psl.eu/cgi-bin/koha/oai.pl?verb=Identify>, identifying as
-  "bibliothèques de l'ENS-PSL". The interface contract is Koha's, so no OpenAPI is stored here.
-- **HAL-ENS Open Archive, ENS-PARIS collection** — *operator: tenant*. ENS deposits inside the
-  national HAL archive run by CCSD/CNRS; harvestable as OAI-PMH set `collection:ENS-PARIS`, and
-  84,784 records are returned by HAL's ENS-scoped Search API. Docs:
-  <https://api.archives-ouvertes.fr/docs/oai>
+#### JSON-LD (1)
 
-### Removed on 2026-08-30 — vendor contract, not ENS's
+Linked-data contexts for the provider's vocabulary.
 
-Two OpenAPI definitions previously in this repository described the **Opendatasoft Explore API
-v2.1** running on the French Ministry of Higher Education portal
-`data.enseignementsup-recherche.gouv.fr` — `info.contact: support@opendatasoft.com`, license
-"Copyright Opendatasoft". ENS neither operates that portal nor is a tenant of it; it is a record
-inside someone else's dataset. Both specs, the pre-refine original, and every schema, structure,
-example, ruleset, agentic-access profile and collection derived from them were removed.
+- [Ens Paris Context](https://apis.io/jsonld/ens-paris/ens-paris-context/)
 
-## Plans / Rate Limits / FinOps
+#### Vocabulary (1)
 
-- Plans & Pricing: [plans/ens-paris-plans-pricing.yml](plans/ens-paris-plans-pricing.yml)
-- Rate Limits: [rate-limits/ens-paris-rate-limits.yml](rate-limits/ens-paris-rate-limits.yml)
-- FinOps: [finops/ens-paris-finops.yml](finops/ens-paris-finops.yml)
+The provider's domain terms, defined.
 
-## Timestamps
+- [ENS Paris API Vocabulary](https://apis.io/vocabularies/ens-paris/ens-paris-vocabulary/)
 
-- **Created:** 2026-06-03
-- **Modified:** 2026-08-30
+#### Security (2)
 
-## Common Properties
+Authentication, trust centre, and vulnerability disclosure.
 
-- Website: <https://www.ens.psl.eu/en>
-- Legal notice / terms: <https://www.ens.psl.eu/mentions-legales>
-- News RSS: <https://www.ens.psl.eu/en/rss.xml>
-- Identity federation: <https://federation.ens.psl.eu/idp/shibboleth>
-- Library catalogue: <https://catalogue.bib.ens.psl.eu/>
-- Research repository: <https://hal-ens.archives-ouvertes.fr/>
-- LinkedIn: <https://www.linkedin.com/school/ecole-normale-superieure/>
-- Conformance: [conformance/ens-paris-conformance.yml](conformance/ens-paris-conformance.yml)
-- Authentication: [authentication/ens-paris-authentication.yml](authentication/ens-paris-authentication.yml)
-- Plans, Rate Limits, FinOps, Review (see files above and [review.yml](review.yml))
+- [Ens Paris Authentication](https://apis.io/security/ens-paris/ens-paris-authentication/)
+- [Ens Paris Domain Security](https://apis.io/security/ens-paris/ens-paris-domain-security/)
 
-## Notes
+#### Plans and pricing (1)
 
-Re-profiled 2026-08-30 under the API Evangelist university pipeline, which settles **who operates
-each surface** before saving anything. Every endpoint in this profile was probed live; none was
-fabricated.
+Published plans, tiers and prices.
 
-- ENS publishes no `llms.txt` (404), no `/jsonapi` or `/api` on the main site (404), and nothing
-  answers at `api.`, `data.`, `developer.`, `opendata.`, `git.` or `gitlab.` under `ens.psl.eu`.
-- No official ENS Paris GitHub organization was found (`github.com/ens-paris`, `github.com/ENSPSL`,
-  `github.com/ENS-Paris` all 404).
-- **No ENS Figshare tenancy exists.** `ens.figshare.com` and `ens-psl.figshare.com` return the same
-  empty HTTP 202 as a nonsense subdomain, so the host is a wildcard, not evidence of a tenancy.
-- `moodle.ens.psl.eu` is a live institution-hosted Moodle with a SAML service provider registered in
-  RENATER, but every LTI path probed redirects to the site home, so no LTI conformance is claimed.
-- The library OAI-PMH provider advertises a baseURL of `/opac/oai.pl` that returns 404 from outside;
-  the working base is `/cgi-bin/koha/oai.pl`.
-- The LinkedIn school page returns HTTP 999 to automated fetchers — a bot block, not a dead link.
-- ENS-PSL Kin Score conformance hits under the `education` regime: `saml`, `shibboleth` and
-  `oai-pmh` (institution-operated), plus `oai-pmh` via the HAL tenancy. See
-  [conformance/ens-paris-conformance.yml](conformance/ens-paris-conformance.yml).
+- [Ens Paris Plans Pricing](https://apis.io/plans/ens-paris/ens-paris-plans-pricing/)
 
-## Maintainers
+#### Rate limits (1)
 
-- Kin Lane — kin@apievangelist.com
+Published request limits.
+
+- [Ens Paris Rate Limits](https://apis.io/rate-limits/ens-paris/ens-paris-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Ens Paris Finops](https://apis.io/finops/ens-paris/ens-paris-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.ens.psl.eu/en)
+- [Terms of service](https://www.ens.psl.eu/mentions-legales)
+
+## API Evangelist rating
+
+**Kin Score 20.6** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 71.4 |
+| Contract quality | 14.3 |
+| Contract governance | 0.0 |
+| Operational transparency | 5.3 |
+| Developer ergonomics | 28.6 |
+| Access clarity | 15.8 |
+
+**Agent readiness 3.1** — human-only
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 20.6** — Education & Research
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/ens-paris/](https://apis.io/providers/ens-paris/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for École Normale Supérieure de Paris: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/ens-paris/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
